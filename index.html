@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #000000;
+            background-image: linear-gradient(225deg, #000000 0%, #784BA0 50%, #000000 100%);
+            min-height: 100vh;
+           
+           
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+        p {
+            font-size: 2rem;
+            text-align: center;
+        }
+        .container{
+            text-align: center;
+            width: 500px;
+            margin: 0  auto;
+            padding: 20px;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 20px;
+            padding: 1rem;
+            margin-top: 2rem;
+           
+            background-color: #000000;
+            background-image: linear-gradient(225deg, #000000 0%, #784BA0 50%, #000000 100%);
+        }
+        .button{
+            background-color: #000000;
+            background-image: linear-gradient(225deg, #000000 0%, #784BA0 50%, #000000 100%);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+
+        
+    </style>
+</head>
+<body >
+
+   <div class="main-container">
+
+    <center><div id="emotionImage"></div></center>
+    <div class="container">
+
+        <button  class="button" onclick="showEmotion('a')">बुरा मत देखो</button>
+        <button  class="button"onclick="showEmotion('b')">बुरा मत सुनो</button>
+        <button class="button" onclick="showEmotion('c')">बुरा मत बोलो</button>
+        <button class="button" onclick="showEmotion('d')" id="playButton">Play Music</button>
+    </div>   
+
+   </div>
+   
+
+      <audio id="myAudio">
+       <source src="./music.mp3" type="audio/mpeg">
+       
+      </audio>
+
+    <script>
+        function showEmotion(emotion) {
+            const imageContainer = document.getElementById('emotionImage');
+            const image = document.createElement('img');
+
+            switch (emotion) {
+                case 'a':
+                    image.src = 'dontsee.gif';
+                    break;
+                case 'b':
+                    image.src = 'dontlisten.gif';
+                    break;
+                case 'c':
+                    image.src = 'dontspeak.gif'; 
+                    break;
+                case 'd':
+                    image.src = 'morning.jpg'; 
+                    break;
+                default:
+                    image.src = '';
+                    break;
+            }
+
+            imageContainer.innerHTML = ''; 
+            imageContainer.appendChild(image);
+        }
+
+        document.getElementById('playButton').addEventListener('click', function() {
+            const audio = document.getElementById('myAudio');
+            if (audio.paused) {
+              audio.play();
+              document.getElementById('playButton').innerText = 'Pause Music';
+            } else {
+              audio.pause();
+              audio.currentTime = 0;
+              document.getElementById('playButton').innerText = 'Play Music';
+            }
+          });
+    </script>
+</body>
+</html>
